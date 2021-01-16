@@ -22,17 +22,19 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Show statistics such as fps and timing information
         sceneView.showsStatistics = true
         
+        sceneView.autoenablesDefaultLighting = true
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         // Create a session configuration
-        let configuration = ARImageTrackingConfiguration()
+        let configuration = ARWorldTrackingConfiguration()
         
         if let imageToTrack = ARReferenceImage.referenceImages(inGroupNamed: "AR Resources", bundle: Bundle.main) {
-            configuration.trackingImages = imageToTrack
-            configuration.maximumNumberOfTrackedImages = 1
+            configuration.detectionImages = imageToTrack
+            configuration.maximumNumberOfTrackedImages = 2
         }
         
         // Run the view's session
@@ -53,16 +55,25 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         let node = SCNNode()
         
         if let imageAnchor = anchor as? ARImageAnchor {
+            
+            
             let plane = SCNPlane(width: imageAnchor.referenceImage.physicalSize.width, height: imageAnchor.referenceImage.physicalSize.height)
             
             // plane properties after render
-            plane.firstMaterial?.diffuse.contents = UIColor(white: 1.0, alpha: 0.5)
+            plane.firstMaterial?.diffuse.contents = UIColor(white: 1, alpha: 0)
             
             let planeNode = SCNNode(geometry: plane)
             
             planeNode.eulerAngles.x = -.pi/2 // rotate ccw by 90 degrees
             
             node.addChildNode(planeNode)
+            
+            if let pokeScene = SCNScene(named: "art.scnassets/Bulbasaur_ColladaMax.scn") {
+                if let pokeNode = pokeScene.rootNode.childNodes.first {
+                    pokeNode.eulerAngles.x = .pi/2
+                    planeNode.addChildNode(pokeNode)
+                }
+            }
         }
         
         return node

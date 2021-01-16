@@ -5,7 +5,10 @@
   },
   "resources" : [
     {
-      "filename" : "tag.arreferenceimage"
+      "filename" : "tag1.arreferenceimage"
+    },
+    {
+      "filename" : "tag2.arreferenceimage"
     }
   ]
 }
