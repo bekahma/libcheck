@@ -32,11 +32,17 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        guard let referenceImages = ARReferenceImage.referenceImages(inGroupNamed: "AR Resources", bundle: nil) else {
+            fatalError("Missing expected asset catalog resources.")
+        }
+        
         // Create a session configuration
         let configuration = ARWorldTrackingConfiguration()
+        configuration.detectionImages = referenceImages
+        sceneView.session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
 
         // Run the view's session
-        sceneView.session.run(configuration)
+        // sceneView.session.run(configuration)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
