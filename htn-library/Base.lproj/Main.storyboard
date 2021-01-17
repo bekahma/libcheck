@@ -11,7 +11,7 @@
         <!--Home-->
         <scene sceneID="EFL-Na-kM6">
             <objects>
-                <viewController id="bEF-Mv-2WO" customClass="DashboardViewController" customModule="htn_library" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Home" id="bEF-Mv-2WO" customClass="DashboardViewController" customModule="htn_library" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="J5O-sO-l0F">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -77,6 +77,9 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" image="house" catalog="system" id="ETl-OP-MXE"/>
+                    <connections>
+                        <outlet property="buttonToDelete" destination="8fT-zt-5wX" id="Rtg-hu-HLW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pXT-NR-gIQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -110,7 +113,23 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1010" y="122"/>
+            <point key="canvasLocation" x="1007" y="122"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="e9s-ES-wq0">
+            <objects>
+                <viewController id="doz-KU-sNH" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7j1-Og-cV2">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="WTO-Wu-2vx"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Settings" image="gearshape" catalog="system" id="fxT-c7-wLR"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6QH-7r-SIf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1412" y="-567"/>
         </scene>
         <!--Scan-->
         <scene sceneID="cSw-fZ-vko">
@@ -137,11 +156,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" systemColor="systemYellowColor"/>
                     </tabBar>
                     <connections>
                         <segue destination="bEF-Mv-2WO" kind="relationship" relationship="viewControllers" id="lTw-ZR-YtR"/>
                         <segue destination="GQq-Rr-APr" kind="relationship" relationship="viewControllers" id="CF6-bY-9i4"/>
                         <segue destination="Tk5-ki-H6x" kind="relationship" relationship="viewControllers" id="iLa-7O-pA9"/>
+                        <segue destination="doz-KU-sNH" kind="relationship" relationship="viewControllers" id="Clp-85-y3l"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WMx-Vv-Qc2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -167,12 +188,16 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="filters"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="22T-4q-Lw1">
-                                <rect key="frame" x="34" y="247" width="346" height="504"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="seats" translatesAutoresizingMaskIntoConstraints="NO" id="cm2-Xx-smT">
+                                <rect key="frame" x="32" y="219" width="350" height="541"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="seats"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U9S-UV-PyR">
+                                <rect key="frame" x="33" y="515" width="62" height="68"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="buttonA03"/>
                                 <connections>
-                                    <segue destination="sR1-Ot-K7D" kind="show" id="env-8q-D2E"/>
+                                    <segue destination="sR1-Ot-K7D" kind="show" id="1Mn-sg-tyv"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -207,10 +232,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="buttonA03" width="169" height="187"/>
         <image name="db1" width="975" height="462"/>
         <image name="db2" width="975" height="462"/>
         <image name="db3" width="975" height="462"/>
         <image name="filters" width="1102" height="234"/>
+        <image name="gearshape" catalog="system" width="128" height="121"/>
         <image name="house" catalog="system" width="128" height="106"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="qrcode.viewfinder" catalog="system" width="128" height="115"/>
@@ -220,6 +247,9 @@
         </systemColor>
         <systemColor name="systemGrayColor">
             <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

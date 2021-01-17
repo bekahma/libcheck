@@ -9,13 +9,14 @@ import UIKit
 
 class DashboardViewController: UIViewController {
 
+    @IBOutlet var buttonToDelete: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
     
-
     /*
     // MARK: - Navigation
 

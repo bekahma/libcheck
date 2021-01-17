@@ -4,7 +4,8 @@ import UIKit
 class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     var captureSession: AVCaptureSession!
     var previewLayer: AVCaptureVideoPreviewLayer!
-
+    var scanned: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -80,13 +81,25 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
             found(code: stringValue)
         }
 
-        dismiss(animated: true)
+        // dismiss(animated: true)
     }
 
     func found(code: String) {
+        if scanned {
+            return
+        }
+        let alert = UIAlertController(title: "You are checked in", message: "Enjoy your day!", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "Continue", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+        scanned = true
         print(code)
     }
 
+    /*
+     let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "DashboardViewController") as! DashboardViewController
+
+     self.navigationController!.pushViewController(secondViewController, animated: true)
+     */
     override var prefersStatusBarHidden: Bool {
         return true
     }
