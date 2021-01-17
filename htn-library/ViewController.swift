@@ -68,10 +68,21 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             
             node.addChildNode(planeNode)
             
-            if let pokeScene = SCNScene(named: "art.scnassets/Bulbasaur_ColladaMax.scn") {
-                if let pokeNode = pokeScene.rootNode.childNodes.first {
-                    pokeNode.eulerAngles.x = .pi/2
-                    planeNode.addChildNode(pokeNode)
+            if imageAnchor.referenceImage.name == "tag1" {
+                if let pokeScene = SCNScene(named: "art.scnassets/Bulbasaur_ColladaMax.scn") {
+                    if let pokeNode = pokeScene.rootNode.childNodes.first {
+                        pokeNode.eulerAngles.x = .pi/2
+                        planeNode.addChildNode(pokeNode)
+                    }
+                }
+            }
+            
+            if imageAnchor.referenceImage.name == "tag2" {
+                if let pokeScene = SCNScene(named: "art.scnassets/Bulbasaur_ColladaMax.scn") {
+                    if let pokeNode = pokeScene.rootNode.childNodes.first {
+                        pokeNode.eulerAngles.x = .pi/2
+                        planeNode.addChildNode(pokeNode)
+                    }
                 }
             }
         }
